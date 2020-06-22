@@ -1,8 +1,11 @@
 quake3:
     image: inanimate/quake3
+    container_name: quake3server
     restart: always
+#   This will run non-default server arguments, e.g. freezetag, instead of default instagib.
+#   command: +set dedicated 1 +set fs_game osp +exec freezetag.cfg
     ports:
         - "27960:27960/udp"
     volumes:
-        - /home/example/pak0.pk3:/usr/share/games/quake3/baseq3/pak0.pk3
+        - /path/to/pak0.pk3:/usr/share/games/quake3/baseq3/pak0.pk3
         - ./server.cfg:/usr/share/games/quake3/baseq3/server.cfg

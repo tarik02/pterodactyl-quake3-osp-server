@@ -1,14 +1,13 @@
-seta sv_hostname "QuakeLAN"
-seta sv_maxclients 16
+seta sv_hostname "Instagib server"
+seta sv_maxclients 24
 seta g_motd "Welcome to the official QuakeLAN Server."
-seta g_quadfactor 4
 seta g_gametype 0
-seta timelimit 15
-seta fraglimit 30
+seta timelimit 0
+seta fraglimit 50
 seta g_weaponrespawn 3
 seta g_inactivity 3000
 seta g_forcerespawn 0
-seta rconpassword "supersecurebr0"
+seta rconpassword "kolikchcesrohliku"
 seta bot_nochat 1
 seta g_log server.log
 seta logfile 3

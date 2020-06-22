@@ -29,10 +29,13 @@ RUN wget "http://michalkozak.cz/q3a/${ioquake_data}" && \
 RUN wget "http://michalkozak.cz/q3a/${osp}" && \
         tar -xvzf ${osp}
 
+## You can include the pak0.pk3 file during the build, if you want to
+#COPY pak0.pk3 baseq3/
+
 USER Debian-quake3
 
 EXPOSE 27960/udp
 
 ENTRYPOINT ["/usr/games/quake3-server"]
 
-CMD ["+set", "dedicated 1", "+set", "fs_game osp", "+exec", "lanwarig.cfg"]
+CMD ["+set", "dedicated", "1", "+set", "fs_game", "osp", "+exec", "lanwarig.cfg"]
