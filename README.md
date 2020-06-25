@@ -2,7 +2,7 @@
 ![Quake 3 Arena OSP in Docker](https://raw.githubusercontent.com/wokoman/docker-quake3-osp-server/master/q3aospdockerlogo.png)
 
 
-Running this image starts Quake 3 Arena server with OSP and instagib on. Using full **OSP 1.03a**.
+Running this image starts **Quake 3 Arena** server with OSP and instagib on. Using full **OSP 1.03a**.
 
 #### Requirements
 This image is fully functional, you only need to supply your own `pak0.pk3` file.
