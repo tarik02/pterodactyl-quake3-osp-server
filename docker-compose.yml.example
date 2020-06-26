@@ -9,3 +9,5 @@ quake3:
     volumes:
         - /path/to/pak0.pk3:/usr/share/games/quake3/baseq3/pak0.pk3
         - /path/to/server.cfg:/usr/share/games/quake3/osp/server.cfg
+    healthcheck:
+        test: ["CMD", "ps", "-C", "ioq3ded"]
