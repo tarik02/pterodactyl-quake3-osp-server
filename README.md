@@ -37,7 +37,7 @@ Default config starts arena with fraglimit 30 on q3dm17 with instagib on. You're
 The server logs, so you can simply:
 
 ```
-docker logs q3aosperver
+docker logs q3aospserver
 ```
 
 #### Shoutouts
