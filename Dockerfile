@@ -36,6 +36,8 @@ USER Debian-quake3
 
 EXPOSE 27960/udp
 
+HEALTHCHECK --start-period=5s CMD ps -C ioq3ded
+
 ENTRYPOINT ["/usr/games/quake3-server"]
 
 CMD ["+set", "dedicated", "1", "+set", "fs_game", "osp", "+exec", "lanwarig.cfg"]
