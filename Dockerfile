@@ -21,7 +21,7 @@ RUN rm -rf \
 
 WORKDIR /usr/share/games/quake3
 
-RUN wget "http://michalkozak.cz/q3a/${ioquake_data}" && \
+RUN wget "http://github.com/nrempel/q3-server/raw/master/${ioquake_data}" && \
         chmod +x ${ioquake_data} && \
         ./${ioquake_data} --tar xvf && \
         rm -rf ./${ioquake_data}
