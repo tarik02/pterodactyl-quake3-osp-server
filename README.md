@@ -1,51 +1,56 @@
-
-![Quake 3 Arena OSP in Docker](https://raw.githubusercontent.com/wokoman/docker-quake3-osp-server/master/q3aospdockerlogo.png)
-
+# 🚀 QUAKE 3 ARENA OSP IN DOCKER
 
 Running this image starts **Quake 3 Arena** server with OSP and instagib on. Using full **OSP 1.03a**.
 
-#### Requirements
+### Requirements
 This image is fully functional, you only need to supply your own `pak0.pk3` file.
 
 Running the image is then simple as:
 
-```
-docker run --name q3aospserver -d -p 27960:27960/udp -v /path/to/pak0.pk3:/usr/share/games/quake3/baseq3/pak0.pk3 michalkozakgd/quake3-osp-server
+```shell
+docker run --name q3aospserver -d -p 27960:27960/udp \
+-v /path/to/pak0.pk3:/usr/share/games/quake3/baseq3/pak0.pk3 \
+wokoman/quake3-osp-server
 ```
 
-#### Customization
+### Customization
 If you want to run the server with OSP, but with your own settings, you can either feed the commands through Docker CLI as in:
 
-```
-docker run --name q3aospserver -d -p 27960:27960/udp -v /path/to/pak0.pk3:/usr/share/games/quake3/baseq3/pak0.pk3 michalkozakgd/quake3-osp-server +fraglimit 150
+```shell
+docker run --name q3aospserver -d -p 27960:27960/udp \
+-v /path/to/pak0.pk3:/usr/share/games/quake3/baseq3/pak0.pk3 \
+wokoman/quake3-osp-server +fraglimit 150
 ```
 
 Or entire server config:
 
-```
-docker run --name q3aospserver -d -p 27960:27960/udp -v /path/to/pak0.pk3:/usr/share/games/quake3/baseq3/pak0.pk3 -v /path/to/server.cfg:/usr/share/games/quake3/osp/server.cfg michalkozakgd/quake3-osp-server
+```shell
+docker run --name q3aospserver -d -p 27960:27960/udp \
+-v /path/to/pak0.pk3:/usr/share/games/quake3/baseq3/pak0.pk3 \
+-v /path/to/server.cfg:/usr/share/games/quake3/osp/server.cfg \
+wokoman/quake3-osp-server
 ```
 
 Or even better, there's a example of `docker-compose.yml` file in the repo, which you can freely customize. Simply amend `command` line to your liking, or supply your own `server.cfg` altogether.
 
-#### Defaults
+### Defaults
 Rcon password is set to `kolikchcesparku`. You can set your own within game with `;rcon seta rconpassword "<secretpassword>"`.
 
 Default config starts arena with fraglimit 30 on q3dm17 with instagib on. You're free to use any included OSP gamemode by `;rcon exec <config>.cfg`.
 
-#### Troubleshooting
+### Troubleshooting
 The server logs, so you can simply:
 
-```
+```shell
 docker logs q3aospserver
 ```
 
-#### Shoutouts
+### Shoutouts
 I forked this image from [InAmiTe](https://github.com/InAnimaTe/docker-quake3) who took [jberrenberg](https://hub.docker.com/r/jberrenberg/quake3) image in the first place. Shoutout!
 
 I also wanted to thank the Debian Games Team for [this](https://packages.debian.org/stable/games/quake3-server) excellent package.
 
-#### Quake 3 Arena server how-tos
+### Quake 3 Arena server how-tos
 
 Here are some really helpful links for setting up the `server.cfg` and utilizing rcon. 
 

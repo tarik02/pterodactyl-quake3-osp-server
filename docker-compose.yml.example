@@ -1,5 +1,5 @@
 quake3:
-    image: michalkozakgd/quake3-osp-server
+    image: wokoman/quake3-osp-server
     container_name: q3aospserver
     restart: always
 #   This will run non-default server arguments, e.g. freezetag, instead of default instagib.
