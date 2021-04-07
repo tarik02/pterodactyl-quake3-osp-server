@@ -1,14 +1,14 @@
 FROM debian:jessie
 
-## The Data from the official point release.
 ENV ioquake_data linuxq3apoint-1.32b-3.x86.run
 ENV osp osp103a.tar.gz
 
 RUN echo "deb http://httpredir.debian.org/debian jessie contrib" >> /etc/apt/sources.list && \
         apt-get update && \
+        apt-get upgrade && \
         apt-get install -y quake3-server \
         wget && \
-            apt-get clean
+        apt-get clean
 
 RUN rm -rf \
         /var/lib/apt/lists/* \
@@ -21,12 +21,12 @@ RUN rm -rf \
 
 WORKDIR /usr/share/games/quake3
 
-RUN wget "http://github.com/nrempel/q3-server/raw/master/${ioquake_data}" && \
+RUN wget "https://dockerq3aosp.blob.core.windows.net/dockerq3aosp/${ioquake_data}" && \
         chmod +x ${ioquake_data} && \
         ./${ioquake_data} --tar xvf && \
         rm -rf ./${ioquake_data}
 
-RUN wget "http://michalkozak.cz/q3a/${osp}" && \
+RUN wget "https://dockerq3aosp.blob.core.windows.net/dockerq3aosp/${osp}" && \
         tar -xvzf ${osp}
 
 ## You can include the pak0.pk3 file during the build, if you want to
