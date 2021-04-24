@@ -16,7 +16,6 @@ RUN rm -rf \
         /var/tmp/* \
         /usr/share/locale/* \
         /var/cache/debconf/*-old \
-        /var/lib/apt/lists/* \
         /usr/share/doc/*
 
 WORKDIR /usr/share/games/quake3
