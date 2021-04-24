@@ -28,13 +28,11 @@ jobs:
         run: echo ${{ steps.docker_build.outputs.digest }}
       - name: Install cosign
         uses: sigstore/cosign-installer@main
-        with:
-          cosign-release: "v0.3.1"
       - name: Prepare cosign
         shell: bash
         run: |
           'echo "$COSIGN_KEY" > /tmp/cosign.key'
         env:
           COSIGN_KEY: ${{ secrets.COSIGN_KEY }}
-      - name: Sign the image pushed
+      - name: Sign the pushed image
         run: echo -n "${{ secrets.COSIGN_KEY_PASSPHRASE }}" | cosign sign -key /tmp/cosign.key wokoman/quake3-osp-server:${{steps.date.outputs.date}}
