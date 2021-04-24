@@ -26,14 +26,15 @@ jobs:
           tags: wokoman/quake3-osp-server:latest,wokoman/quake3-osp-server:${{ steps.date.outputs.date }}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+      - name: Install cosign
+        uses: sigstore/cosign-installer@main
+        with:
+          cosign-release: "v0.3.1"
       - name: Prepare cosign
         shell: bash
         run: |
-          curl -fsLJO https://github.com/sigstore/cosign/releases/download/v0.3.1/cosign-linux-amd64
-          chmod +x cosign-linux-amd64
-          echo ${{ secrets.COSIGN_KEY }} > /tmp/cosign.key
           'echo "$COSIGN_KEY" > /tmp/cosign.key'
         env:
           COSIGN_KEY: ${{ secrets.COSIGN_KEY }}
       - name: Sign the image pushed
-        run: echo -n "${{ secrets.COSIGN_KEY_PASSPHRASE }}" | ./cosign-linux-amd64 sign -key /tmp/cosign.key wokoman/quake3-osp-server:${{steps.date.outputs.date}}
+        run: echo -n "${{ secrets.COSIGN_KEY_PASSPHRASE }}" | cosign sign -key /tmp/cosign.key wokoman/quake3-osp-server:${{steps.date.outputs.date}}
