@@ -1,5 +1,4 @@
 #!/bin/bash
-cd /home/container
 
 # Output the current server executable version, if applicable
 # For example, if you have a 'quake3-server -version' command or similar, you can use it here.
