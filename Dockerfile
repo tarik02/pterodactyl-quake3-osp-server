@@ -15,8 +15,6 @@ RUN rm -rf \
     /var/cache/debconf/*-old \
     /usr/share/doc/*
 
-WORKDIR /usr/share/games/quake3
-
 # Create a dedicated user and setup the working directory
 RUN adduser --disabled-password --home /home/container container
 
@@ -30,6 +28,7 @@ HEALTHCHECK --start-period=5s CMD ps -C ioq3ded
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+WORKDIR /home/container
 ENV HOME=/home/container
 ENV USER=container
 USER container
