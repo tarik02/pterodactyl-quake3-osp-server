@@ -13,4 +13,4 @@ echo ":/home/container$ ${MODIFIED_STARTUP}"
 
 # Run the Server
 # This command starts up the server with the modified startup command.
-${MODIFIED_STARTUP}
+exec ${MODIFIED_STARTUP}
