@@ -1,0 +1,31 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2023-10-28T20:49:39+03:00",
+    "name": "ioquake3",
+    "author": "taras.fomin@gmail.com",
+    "description": null,
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/tarik02\/q3aosptero:release": "ghcr.io\/tarik02\/q3aosptero:release"
+    },
+    "file_denylist": [],
+    "startup": "+set dedicated 1 +set net_port {{SERVER_PORT}} +set fs_game osp +exec ffa.cfg",
+    "config": {
+        "files": "{}",
+        "startup": "{}",
+        "logs": "{}",
+        "stop": "quit"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/usr\/bin\/env ash\r\n\r\ncd \/mnt\/server\r\n\r\n# Set environment variables for the Quake server data\r\nioquake_data=linuxq3apoint-1.32b-3.x86.run\r\nosp=osp103a.tar.gz\r\n\r\n# Download and setup the Quake server data\r\nwget \"https:\/\/dockerq3aosp.blob.core.windows.net\/dockerq3aosp\/${ioquake_data}\"\r\nchmod +x ${ioquake_data}\r\n.\/${ioquake_data} --tar xvf\r\nrm -rf .\/${ioquake_data}\r\n\r\n# Download and extract additional server data\r\nwget \"https:\/\/dockerq3aosp.blob.core.windows.net\/dockerq3aosp\/${osp}\"\r\ntar -xvzf ${osp}\r\n\r\nwget https:\/\/raw.githubusercontent.com\/nrempel\/q3-server\/master\/baseq3\/pak0.pk3 -P baseq3",
+            "container": "alpine:3.18.4",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": []
+}

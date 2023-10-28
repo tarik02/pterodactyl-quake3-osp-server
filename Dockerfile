@@ -35,6 +35,3 @@ USER container
 
 # Set the entry point script, which will start the Quake server
 ENTRYPOINT ["/entrypoint.sh"]
-
-# Set default parameters for the Quake server command
-CMD ["+set", "dedicated", "1", "+set", "fs_game", "osp"]
