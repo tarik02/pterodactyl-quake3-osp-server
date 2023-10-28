@@ -8,7 +8,7 @@
 # This command uses 'sed' to replace {{VARIABLE}} placeholders with the actual environment variable values.
 # It allows Pterodactyl's panel to define startup variables that your server uses.
 MODIFIED_STARTUP=$(/usr/lib/ioquake3/ioq3ded +set fs_basepath $PWD eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g'))
-echo ":/home/container$ ${MODIFIED_STARTUP}"
+echo ":${PWD}$ ${MODIFIED_STARTUP}"
 
 # Run the Server
 # This command starts up the server with the modified startup command.
