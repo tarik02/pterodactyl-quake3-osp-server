@@ -30,6 +30,8 @@ HEALTHCHECK --start-period=5s CMD ps -C ioq3ded
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+ENV HOME=/home/container
+ENV USER=container
 USER container
 
 # Set the entry point script, which will start the Quake server
